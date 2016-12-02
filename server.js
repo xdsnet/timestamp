@@ -39,16 +39,16 @@ app.get("/*",function(req,res){
     }else{
         if(parseInt(timeStr).toString() === timeStr){ //timeStr是数字值，即unixtime值
             timeStr = parseInt(timeStr)
-            console.log(" unixtime")
+            console.log("unixtime")
             date=new Date(timeStr)
         }else{
-            date=new Date(Date.parse(timeStr))
+            date=new Date(Date.parse(timeStr+" GMT"))
             console.log("no unixtime")
             console.log(timeStr)
         }
         console.log(date)
         var rt={}
-        if(date.getTime()){
+        if(typeof date.getTime()==="number"){
             console.log("time ok")
             rt={
                 "unixtime":date.getTime(),
