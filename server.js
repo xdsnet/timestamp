@@ -1,6 +1,7 @@
 var express = require("express")
 var app = express()
-var lstPort=process.argv[2] || 80
+require('dotenv').load();
+
 app.get("/*",function(req,res){
     var timeStr = decodeURI(req.path.substr(1)) //解码出查询数据
     var date
@@ -64,4 +65,7 @@ app.get("/*",function(req,res){
         res.send(JSON.stringify(rt))
     }
 })
-app.listen(lstPort)
+var port = process.env.PORT || 8080;
+app.listen(port,  function () {
+	console.log('Node.js listening on port ' + port + '...');
+});
