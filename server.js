@@ -1,6 +1,6 @@
 var express = require("express")
 var app = express()
-
+var lstPort=process.argv[2] || 80
 app.get("/*",function(req,res){
     var timeStr = decodeURI(req.path.substr(1)) //解码出查询数据
     var date
@@ -64,5 +64,4 @@ app.get("/*",function(req,res){
         res.send(JSON.stringify(rt))
     }
 })
-
-app.listen(80)
+app.listen(lstPort)
